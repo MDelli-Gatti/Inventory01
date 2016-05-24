@@ -25,6 +25,34 @@ public class Main {
        return createItem(item, quantity, category);
 
     }
+    public static void addItem(){
+        System.out.println("Enter your new item.");
+        String item = Main.scanner.nextLine();
+        System.out.println("Enter the quantity.");
+        String quantityStr = Main.scanner.nextLine();
+        int quantity = Integer.valueOf(quantityStr);
+        System.out.println("Enter the category.");
+        String category = scanner.nextLine();
+        InventoryItem inv = createItem(item, quantity, category);
+        items.add(inv);
+    }
+    public static void removeItem(){
+        System.out.println("Which item number would you like to remove?");
+        String remove = Main.scanner.nextLine();
+        int num = Integer.valueOf(remove);
+        InventoryItem tempItem = items.get(num - 1);
+        items.remove(tempItem);
+    }
+
+    public static void updateQuantity() {
+        System.out.println("Which item number would you like to update?");
+        String itemU = Main.scanner.nextLine();
+        int numb = Integer.valueOf(itemU);
+        InventoryItem tempItem1 = items.get(numb - 1);
+        System.out.printf("What is the new quantity of %s?\n", itemU);
+        String quan = Main.scanner.nextLine();
+        tempItem1.quantity = Integer.valueOf(quan);
+    }
 
     public static void main(String[] args) {
 
@@ -45,36 +73,13 @@ public class Main {
 
             switch (selection){
                 case"1":
-                    System.out.println("Enter your new item.");
-                    String item = Main.scanner.nextLine();
-                    System.out.println("Enter the quantity.");
-                    String quantityStr = Main.scanner.nextLine();
-                    int quantity = Integer.valueOf(quantityStr);
-                    System.out.println("Enter the category.");
-                    String category = scanner.nextLine();
-                    InventoryItem inv = createItem(item, quantity, category);
-                    items.add(inv);
-                    //InventoryItem things = new InventoryItem();
-                    //items.add(things);
+                    addItem();
                     break;
                 case "2":
-                    //remove item
-                    System.out.println("Which item number would you like to remove?");
-                    String remove = Main.scanner.nextLine();
-                    int num = Integer.valueOf(remove);
-                    InventoryItem tempItem = items.get(num - 1);
-                    items.remove(tempItem);
+                    removeItem();
                     break;
                 case "3":
-                    //update quantity
-                    System.out.println("Which item number would you like to update?");
-                    String itemU = Main.scanner.nextLine();
-                    int numb = Integer.valueOf(itemU);
-                    InventoryItem tempItem1 = items.get(numb - 1);
-                    System.out.println("What is the new quantity of " + itemU + "?");
-                    String quan = Main.scanner.nextLine();
-                    tempItem1.quantity = Integer.valueOf(quan);
-
+                    updateQuantity();
                     break;
                 default:
                     System.out.println("invalid selection");
