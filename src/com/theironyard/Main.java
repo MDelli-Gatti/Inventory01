@@ -72,7 +72,7 @@ public class Main {
             String selection = Main.scanner.nextLine();
 
             switch (selection){
-                case"1":
+                case "1":
                     addItem();
                     break;
                 case "2":
